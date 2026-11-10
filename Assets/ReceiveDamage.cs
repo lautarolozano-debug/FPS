@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class ReceiveDamage : MonoBehaviour
 {
+
+    public int health = 100;
+    
+    
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,11 +24,11 @@ public class ReceiveDamage : MonoBehaviour
         if (collision.gameObject.CompareTag("Projectile"))
         {
             Debug.Log("Received damage from projectile!");
-            
+
             Destroy(collision.gameObject);
 
-            Destroy(gameObject);
-
+            health -= 10;
+            Debug.Log("Current Healt: " + health); 
 
         }
     }
