@@ -21,6 +21,10 @@ namespace StarterAssets
 		public bool cursorLocked = true;
 		public bool cursorInputForLook = true;
 
+
+		[Header("Shooting Settings")]
+		public GameObject projectilePrefab;
+
 #if ENABLE_INPUT_SYSTEM
 		public void OnMove(InputValue value)
 		{
@@ -58,6 +62,10 @@ public void OnShoot (InputValue value)
 		private void Shoot()
 		{
 			Debug.Log("REAL SHOOTING LOGIC GOES HERE");
+
+			Instantiate(projectilePrefab, transform.position, transform.rotation);
+		
+		
 		}
 
 
