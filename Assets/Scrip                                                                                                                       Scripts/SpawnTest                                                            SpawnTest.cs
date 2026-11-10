@@ -6,10 +6,12 @@ public class SpawnSpawnTest : MonoBehaviour
    
     
     public GameObject ObjectToSpawn;
-    
+
+    public Vector3 spawnPosition;
+
     void Start()
     {
-        
+        Instantiate(ObjectToSpawn, spawnPosition, transform.rotation);
     }
 
     // Update is called once per frame

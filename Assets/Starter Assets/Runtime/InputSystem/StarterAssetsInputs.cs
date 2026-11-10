@@ -24,6 +24,9 @@ namespace StarterAssets
 
 		[Header("Shooting Settings")]
 		public GameObject projectilePrefab;
+		public Transform projectileSpawnPoint;
+		public float projectileForce = 50f;
+
 
 #if ENABLE_INPUT_SYSTEM
 		public void OnMove(InputValue value)
@@ -63,8 +66,11 @@ public void OnShoot (InputValue value)
 		{
 			Debug.Log("REAL SHOOTING LOGIC GOES HERE");
 
-			Instantiate(projectilePrefab, transform.position, transform.rotation);
-		
+			GameObject newProjectile = Instantiate (projectilePrefab, projectileSpawnPoint.position, transform.rotation);
+
+			newProjectile.GetComponent<Rigidbody>().AddForce(projectileSpawnPoint.transform.forward * projectileForce, ForceMode.Impulse);
+
+			Destroy(newProjectile, 5f);
 		
 		}
 
